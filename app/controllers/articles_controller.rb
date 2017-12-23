@@ -39,6 +39,13 @@ class ArticlesController < ApplicationController
     end
   end
   
+  def destroy
+    #find the article to edit based on the form variable
+    @article = Article.find(params[:id])
+    @article.destroy #command to update with whitelisted (article_params) input
+    flash[:notice] = "Article was successfully destroyed (boom sauce!)" #outputs a notice to user all is well
+    redirect_to articles_path #after the article is saved, send the browser to show what is now in the article table
+  end
   
   private
   def article_params
