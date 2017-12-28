@@ -1,0 +1,6 @@
+<h1 align="center">Welcome to <%= @user.username %>'s page</h1>
+
+<h4 align="center"><%= @user.username %>'s articles</h4>
+<%= will_paginate @user_articles %>
+<%= render 'articles/article', obj: @user_articles %>
+<%= will_paginate @user_articles %>

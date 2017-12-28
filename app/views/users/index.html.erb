@@ -1,0 +1,18 @@
+<table>
+  <tr>
+    <th>Username</th><th>Email</th><th>Author</th><th>Authored</th><th>Actions</th>
+  </tr>
+  <%= will_paginate %>
+  
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.username %></td>
+      <td><%= user.email %></td> 
+      <td><%= pluralize(user.articles.count, "article") if user.articles %></td>
+      <td><%= link_to 'Visit Profile', user_path(user) %> </td> 
+      <td>
+      </td>
+    </tr>
+  <% end %>
+  
+</table>

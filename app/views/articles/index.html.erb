@@ -1,19 +1,4 @@
 <h1>All the Sweetest Articles</h1>
 <p><%= link_to 'Create a Sweet Article', new_article_path %></p>
-<table>
-  <tr>
-    <th>Title</th><th>Description</th><th>Author</th><th>Actions</th>
-  </tr>
-    <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.description %></td> 
-      <td><%= article.user.username if article.user %></td> 
-      <td><%= link_to 'Show Article', article_path(article) %> 
-      <%= link_to 'Edit Article', edit_article_path(article) %>
-      <%= link_to 'Delete Article', article_path(article), method: :delete, data: {confirm: "Are you suuuuuure?" }  %>
-      </td>
-    </tr>
-  <% end %>
-  
-</table>
+<%= will_paginate %>
+<%= render 'article', obj: @articles %>
