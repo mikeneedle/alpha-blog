@@ -6,4 +6,7 @@
 <p>
   Description: <%= @article.description %>
 </p>
-<p><%= link_to 'To Main Sweetness', articles_path %> | <%= link_to 'Edit This Sweetness', edit_article_path %></p>
+<p><%= link_to 'To Main Sweetness', articles_path %> | 
+<% if logged_in? && current_user == @article.user %>
+  <%= link_to 'Edit This Sweetness', edit_article_path %></p>
+<% end %>
