@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
   def create
     #render plain: params[:article].inspect
     @article = Article.new(article_params) #to whitelist data for entry so it can be saved
-    @article.user = User.first #hard coding userid for testing
+    @article.user = current_user
     if @article.save #if saved ok
       flash[:notice] = "Article was successfully saved" #outputs a notice to user all is well
       redirect_to article_path(@article) #after the article is saved, send the browser to show what is now in the article table
