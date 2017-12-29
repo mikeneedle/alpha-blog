@@ -7,6 +7,6 @@
   Description: <%= @article.description %>
 </p>
 <p><%= link_to 'To Main Sweetness', articles_path %> | 
-<% if logged_in? && current_user == @article.user %>
+<% if logged_in? && (current_user == @article.user || current_user.admin?) %>
   <%= link_to 'Edit This Sweetness', edit_article_path %></p>
 <% end %>
