@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params) #to whitelist data for entry so it can be saved
     @article.user = current_user
     if @article.save #if saved ok
-      flash[:notice] = "Article was successfully saved" #outputs a notice to user all is well
+      flash[:success] = "Article was successfully saved" #outputs a notice to user all is well
       redirect_to article_path(@article) #after the article is saved, send the browser to show what is now in the article table
     else #issue with the save
       render 'new' #display form for user to try again
@@ -35,7 +35,7 @@ class ArticlesController < ApplicationController
   def update
     #find the article to edit based on the form variable
     if @article.update(article_params) #command to update with whitelisted (article_params) input
-      flash[:notice] = "Article was successfully saved" #outputs a notice to user all is well
+      flash[:success] = "Article was successfully saved" #outputs a notice to user all is well
       redirect_to article_path(@article) #after the article is saved, send the browser to show what is now in the article table
     else #issue with the save
       render 'edit' #display form for user to try again
@@ -45,7 +45,7 @@ class ArticlesController < ApplicationController
   def destroy
     #find the article to edit based on the form variable
     @article.destroy #command to update with whitelisted (article_params) input
-    flash[:notice] = "Article was successfully destroyed (boom sauce!)" #outputs a notice to user all is well
+    flash[:success] = "Article was successfully destroyed (boom sauce!)" #outputs a notice to user all is well
     redirect_to articles_path #after the article is saved, send the browser to show what is now in the article table
   end
   
