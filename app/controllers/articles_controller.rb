@@ -27,6 +27,8 @@ class ArticlesController < ApplicationController
   
   #shows the requested article
   def show
+    @article = Article.find(params[:id])
+    #@articles = @article.paginate(page: params[:page], per_page: 5)
   end
   
   def edit
@@ -51,7 +53,7 @@ class ArticlesController < ApplicationController
   
   private
   def article_params
-    params.require(:article).permit(:title, :description)
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
   
   def set_article
